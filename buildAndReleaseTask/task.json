@@ -24,7 +24,7 @@
         }
     ],
     "execution": {
-        "Node12": {
+        "Node10": {
             "target": "index.js"
         }
     }
