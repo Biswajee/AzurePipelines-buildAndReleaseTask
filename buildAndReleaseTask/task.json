@@ -1,0 +1,31 @@
+{
+    "$schema": "https://raw.githubusercontent.com/Microsoft/azure-pipelines-task-lib/master/tasks.schema.json",
+    "id": "154e6bd8-c235-4232-940e-051ebd3e1867",
+    "name": "AzureBuildReleaseTask",
+    "friendlyName": "Azure build and release task",
+    "description": "Azure custom devops pipeline",
+    "helpMarkDown": "",
+    "category": "Utility",
+    "author": "Biswajit Roy",
+    "version": {
+        "Major": 0,
+        "Minor": 1,
+        "Patch": 0
+    },
+    "instanceNameFormat": "Echo $(samplestring)",
+    "inputs": [
+        {
+            "name": "samplestring",
+            "type": "string",
+            "label": "Sample String",
+            "defaultValue": "",
+            "required": true,
+            "helpMarkDown": "A sample string"
+        }
+    ],
+    "execution": {
+        "Node12": {
+            "target": "index.js"
+        }
+    }
+}
