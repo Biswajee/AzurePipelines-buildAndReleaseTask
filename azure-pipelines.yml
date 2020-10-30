@@ -56,7 +56,7 @@ stages:
           - task: QueryAzureDevOpsExtensionVersion@3
             inputs:
               connectTo: 'VsTeam'
-              connectedServiceName: 'connectedService:github:OAuth' # Change to whatever you named the service connection
+              connectedServiceName: '$(connectedServiceName)' # Change to whatever you named the service connection
               publisherId: '$(PublisherID)'
               extensionId: '$(ExtensionID)'
               versionAction: 'Patch'
@@ -98,7 +98,7 @@ stages:
           - task: PublishAzureDevOpsExtension@3
             inputs:
               connectTo: 'VsTeam'
-              connectedServiceName: 'connectedService:github:OAuth' # Change to whatever you named the service connection
+              connectedServiceName: '$(connectedServiceName)' # Change to whatever you named the service connection
               fileType: 'vsix'
               vsixFile: '/Publisher.*.vsix'
               publisherId: '$(PublisherID)'
