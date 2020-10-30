@@ -5,29 +5,32 @@ pool:
   vmImage: "ubuntu-latest"
 
 variables:
-  - group: build-release-extension-variable-group
+  - group: variable-group # Rename to whatever you named your variable group in the prerequisite stage of step 6
 
 stages:
   - stage: Run_and_publish_unit_tests
     jobs:
       - job:
         steps:
+          - task: TfxInstaller@3
+            inputs:
+              version: "v0.7.x"
           - task: Npm@1
             inputs:
               command: 'install'
-              workingDir: '/buildAndReleaseTask' # Update to the name of the directory of your task
+              workingDir: '/buildAndReleaseTask' 
           - task: Bash@3
             displayName: Compile Javascript
             inputs:
               targetType: "inline"
               script: |
-                cd buildAndReleaseTask # Update to the name of the directory of your task
+                cd buildAndReleaseTask
                 tsc
           - task: Npm@1
             inputs:
               command: 'custom'
-              workingDir: '/buildAndReleaseTask/tests' # Update to the name of the directory of your task's tests
-              customCommand: 'mocha tests/_suite.js' # See the definition in the explanation section below - it may be called test
+              workingDir: '/buildAndReleaseTask/tests'
+              customCommand: 'mocha tests/_suite.js'
           - task: PublishTestResults@2
             inputs:
               testResultsFormat: 'JUnit'
@@ -36,16 +39,19 @@ stages:
     jobs:
       - job:
         steps:
+          - task: TfxInstaller@3
+            inputs:
+              version: "v0.7.x"
           - task: Npm@1
             inputs:
               command: 'install'
-              workingDir: '/buildAndReleaseTask' # Update to the name of the directory of your task
+              workingDir: '/buildAndReleaseTask'
           - task: Bash@3
             displayName: Compile Javascript
             inputs:
               targetType: "inline"
               script: |
-                cd buildAndReleaseTask # Update to the name of the directory of your task
+                cd buildAndReleaseTask
                 tsc
           - task: QueryAzureDevOpsExtensionVersion@3
             inputs:
@@ -80,6 +86,9 @@ stages:
     jobs:
       - job:
         steps:
+          - task: TfxInstaller@3
+            inputs:
+              version: "v0.7.x"
           - task: DownloadBuildArtifacts@0
             inputs:
               buildType: "current"
