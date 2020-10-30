@@ -1,6 +1,6 @@
 import tl = require('azure-pipelines-task-lib/task');
 
-async function run() {
+function run() {
     try {
         const inputString: string | undefined = tl.getInput('samplestring', true);
         if (inputString == 'bad') {
