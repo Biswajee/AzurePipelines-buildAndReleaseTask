@@ -14,7 +14,8 @@ stages:
         steps:
           - task: TfxInstaller@3
             inputs:
-              version: "v0.7.x"
+              version: "v0.8.x"
+              checkLatest: true
           - task: Npm@1
             inputs:
               command: 'install'
