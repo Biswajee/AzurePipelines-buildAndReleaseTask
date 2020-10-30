@@ -18,7 +18,7 @@ stages:
           - task: Npm@1
             inputs:
               command: 'install'
-              workingDir: '/buildAndReleaseTask' 
+              workingDir: 'buildAndReleaseTask' 
           - task: Bash@3
             displayName: Compile Javascript
             inputs:
@@ -29,7 +29,7 @@ stages:
           - task: Npm@1
             inputs:
               command: 'custom'
-              workingDir: '/buildAndReleaseTask/tests'
+              workingDir: 'buildAndReleaseTask/tests'
               customCommand: 'mocha tests/_suite.js'
           - task: PublishTestResults@2
             inputs:
@@ -45,7 +45,7 @@ stages:
           - task: Npm@1
             inputs:
               command: 'install'
-              workingDir: '/buildAndReleaseTask'
+              workingDir: 'buildAndReleaseTask'
           - task: Bash@3
             displayName: Compile Javascript
             inputs:
