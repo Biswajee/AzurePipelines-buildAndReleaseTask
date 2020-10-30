@@ -26,6 +26,7 @@ stages:
               script: |
                 cd buildAndReleaseTask
                 tsc
+                npm i mocha
           - task: Npm@1
             inputs:
               command: 'custom'
