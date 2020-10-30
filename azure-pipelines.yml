@@ -30,7 +30,7 @@ stages:
             inputs:
               command: 'custom'
               workingDir: 'buildAndReleaseTask/tests'
-              customCommand: 'mocha tests/_suite.js'
+              customCommand: 'test'
           - task: PublishTestResults@2
             inputs:
               testResultsFormat: 'JUnit'
